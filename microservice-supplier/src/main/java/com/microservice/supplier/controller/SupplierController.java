@@ -29,4 +29,16 @@ public class SupplierController {
     public ResponseEntity<?> findSupplierById(@PathVariable Long id) {
         return ResponseEntity.ok(supplierService.getSupplierById(id));
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteSupplier(@PathVariable Long id) {
+        supplierService.deleteSupplier(id);
+        return ResponseEntity.ok("Supplier deleted");
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateSupplier(@PathVariable Long id, @RequestBody Supplier supplier) {
+        supplierService.updateSupplier(id, supplier);
+        return ResponseEntity.ok("Supplier updated");
+    }
 }
