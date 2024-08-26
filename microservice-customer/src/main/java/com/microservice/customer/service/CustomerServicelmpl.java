@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CustomerServicelmpl implements iCustomerService{
@@ -24,5 +23,17 @@ public class CustomerServicelmpl implements iCustomerService{
     public void saveCustomer(Customer customer) {customerRepository.save(customer);}
 
     @Override
-    public void deleteCustomer(Long id) {}
+    public void deleteCustomer(Long id) {
+        customerRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateCustomer(Long id, Customer customer) {
+        Customer customerToUpdate = customerRepository.findById(id).orElseThrow();
+        customerToUpdate.setCustomerName(customer.getCustomerName());
+        customerToUpdate.setCustomerAdress(customer.getCustomerAdress());
+        customerToUpdate.setCustomerPhone(customer.getCustomerPhone());
+        customerToUpdate.setCustomerEmail(customer.getCustomerEmail());
+        customerRepository.save(customerToUpdate);
+    }
 }

@@ -10,4 +10,5 @@ public interface iCustomerService {
     Customer getCustomerById(Long id);
     void saveCustomer(Customer customer);
     void deleteCustomer(Long id);
+    void updateCustomer(Long id, Customer customer);
 }

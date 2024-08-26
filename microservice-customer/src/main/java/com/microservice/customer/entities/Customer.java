@@ -26,11 +26,13 @@ public class Customer {
 
     @NotNull(message = "El nombre es obligatorio")
     @Size(min = 1, max = 50, message = "El nombre debe tener entre 1 y 50 caracteres")
-    private String costumerName;
-    private String costumerAdress;
-    private String costumerPhone;
+    private String customerName;
+    private String customerAdress;
+    private String customerPhone;
     @NotNull(message = "El email es obligatorio")
     @Email(message = "El email debe ser válido")
-    private String costumerEmail;
+    private String customerEmail;
     private LocalDateTime created_at;
+
+
 }
