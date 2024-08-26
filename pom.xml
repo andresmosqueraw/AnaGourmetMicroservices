@@ -22,6 +22,9 @@
     <module>microservice-eureka</module>
     <module>microservice-config</module>
     <module>microservice-supplier</module>
+    <module>microservice-customer</module>
+    <module>microservice-inventory</module>
+    <module>microservice-sale</module>
   </modules>
 
   <properties>
