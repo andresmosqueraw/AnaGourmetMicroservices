@@ -2,6 +2,7 @@ package com.microservice.supplier.service;
 
 import com.microservice.supplier.entities.Supplier;
 import com.microservice.supplier.persistence.SupplierRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ public class SupplierServiceImpl implements ISupplierService {
     }
 
     @Override
+    @Transactional
     public void saveSupplier(Supplier supplier) {
         supplierRepository.save(supplier);
     }
