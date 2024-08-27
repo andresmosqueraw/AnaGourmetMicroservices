@@ -1,31 +1,5 @@
-server:
-  port: 8080
-
 spring:
   application:
     name: msvc-gateway
   config:
     import: optional:configserver:http://localhost:8888
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      mvc:
-        routes:
-          - id: suppliers
-            uri: http://localhost:8090
-            predicates:
-              - Path=/api/supplier/**
-          - id: customers
-            uri: http://localhost:8100
-            predicates:
-              - Path=/api/sale/**
-          - id: inventories
-            uri: http://localhost:8110
-            predicates:
-              - Path=/api/inventory/**
-          - id: sales
-            uri: http://localhost:8120
-            predicates:
-              - Path=/api/sale/**
