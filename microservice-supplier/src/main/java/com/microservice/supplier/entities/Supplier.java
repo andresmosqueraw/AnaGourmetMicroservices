@@ -24,4 +24,6 @@ public class Supplier {
     private String suppliedProduct;
     private String phone;
     private LocalDateTime createdAt;
+    private int userId;
+    private int statusSupplier;
 }
