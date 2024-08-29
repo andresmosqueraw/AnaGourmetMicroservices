@@ -16,7 +16,7 @@ public class SupplierServiceImpl implements ISupplierService {
 
     @Override
     public List<Supplier> getAllSuppliers() {
-        return (List<Supplier>) supplierRepository.findAll();
+        return supplierRepository.findByStatusSupplier(1);
     }
 
     @Override
