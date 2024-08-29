@@ -1,29 +1,44 @@
 package com.microservice.supplier.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
-@Data
+@Getter
+@Setter
 @Entity
-@Builder
 @Table(name = "suppliers")
-@AllArgsConstructor
-@NoArgsConstructor
 public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // @Column(name = "")
-
+    @Column(name = "supplier_id")
     private Long supplierId;
+
+    @jakarta.validation.constraints.Size(max = 255)
+    @jakarta.validation.constraints.NotNull
+    @Column(name = "supplier_name", nullable = false)
     private String supplierName;
+
+    @jakarta.validation.constraints.Size(max = 255)
+    @jakarta.validation.constraints.NotNull
+    @Column(name = "supplied_product", nullable = false)
     private String suppliedProduct;
+
+    @jakarta.validation.constraints.Size(max = 20)
+    @Column(name = "phone", length = 20)
     private String phone;
-    private LocalDateTime createdAt;
-    private int userId;
-    private int statusSupplier;
+
+    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @Column(name = "user_id")
+    private Integer userId;
+
+    @Column(name = "status_supplier")
+    private Integer statusSupplier;
+
 }
