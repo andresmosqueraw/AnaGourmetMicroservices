@@ -24,8 +24,8 @@ public class Supplier {
 
     @jakarta.validation.constraints.Size(max = 255)
     @jakarta.validation.constraints.NotNull
-    @Column(name = "supplied_product", nullable = false)
-    private String suppliedProduct;
+    @Column(name = "supplier_product", nullable = false)
+    private String supplierProduct;
 
     @jakarta.validation.constraints.Size(max = 20)
     @Column(name = "phone", length = 20)
