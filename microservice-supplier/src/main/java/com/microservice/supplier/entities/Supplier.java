@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // @Column(name = "")
 
     private Long supplierId;
     private String supplierName;

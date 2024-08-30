@@ -6,7 +6,7 @@ spring:
     name: msvc-customer
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/anagourmet
+    url: jdbc:postgresql://localhost:5433/customers
     username: postgres
     password: postgres
   jpa:
