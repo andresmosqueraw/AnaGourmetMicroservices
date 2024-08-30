@@ -15,28 +15,33 @@ public class SupplierController {
     @Autowired
     private ISupplierService supplierService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void saveSupplier(@RequestBody Supplier supplier) {
         supplierService.saveSupplier(supplier);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/all")
     public ResponseEntity<?> getAllSuppliers() {
         return ResponseEntity.ok(supplierService.getAllSuppliers());
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/search/{id}")
     public ResponseEntity<?> findSupplierById(@PathVariable Long id) {
         return ResponseEntity.ok(supplierService.getSupplierById(id));
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteSupplier(@PathVariable Long id) {
         supplierService.deleteSupplier(id);
         return ResponseEntity.ok("Supplier deleted");
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateSupplier(@PathVariable Long id, @RequestBody Supplier supplier) {
         supplierService.updateSupplier(id, supplier);
