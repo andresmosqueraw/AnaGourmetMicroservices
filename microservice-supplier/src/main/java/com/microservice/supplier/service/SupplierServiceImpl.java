@@ -2,7 +2,6 @@ package com.microservice.supplier.service;
 
 import com.microservice.supplier.entities.Supplier;
 import com.microservice.supplier.persistence.SupplierRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +25,10 @@ public class SupplierServiceImpl implements ISupplierService {
     }
 
     @Override
-    @Transactional
     public void saveSupplier(Supplier supplier) {
+        if (supplier.getSupplierProduct() == null || supplier.getSupplierProduct().isEmpty()) {
+            throw new IllegalArgumentException("Supplier must have at least one product.");
+        }
         if(supplier.getCreatedAt() == null) {
             supplier.setCreatedAt(Instant.now());
         }
@@ -35,7 +36,6 @@ public class SupplierServiceImpl implements ISupplierService {
     }
 
     @Override
-    @Transactional
     public void deleteSupplier(Long id) {
         Supplier supplierToUpdate = supplierRepository.findById(id).orElseThrow(() -> new RuntimeException("Proveedor no encontrado por ID " + id));
         supplierToUpdate.setStatusSupplier(0);

@@ -14,7 +14,7 @@ import java.time.Instant;
 public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "supplier_id")
+    @Column(name = "supplier_id", nullable = false, updatable = false)
     private Long supplierId;
 
     @jakarta.validation.constraints.Size(max = 255)
