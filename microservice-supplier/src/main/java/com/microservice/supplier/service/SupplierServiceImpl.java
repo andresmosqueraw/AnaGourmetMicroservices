@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -27,14 +28,17 @@ public class SupplierServiceImpl implements ISupplierService {
     @Override
     @Transactional
     public void saveSupplier(Supplier supplier) {
+        if(supplier.getCreatedAt() == null) {
+            supplier.setCreatedAt(Instant.now());
+        }
         supplierRepository.save(supplier);
     }
 
     @Override
     @Transactional
     public void deleteSupplier(Long id) {
-        Supplier supplierToUpdate = supplierRepository.findById(id).orElseThrow(() -> new RuntimeException("Supplier not found with id " + id));
-        supplierToUpdate.setStatusSupplier(0);  // Asumiendo que "inactivo" es un valor válido para el campo status_supplier
+        Supplier supplierToUpdate = supplierRepository.findById(id).orElseThrow(() -> new RuntimeException("Proveedor no encontrado por ID " + id));
+        supplierToUpdate.setStatusSupplier(0);
         supplierRepository.save(supplierToUpdate);
     }
 

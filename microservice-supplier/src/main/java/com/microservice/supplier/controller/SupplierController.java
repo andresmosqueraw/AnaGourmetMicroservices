@@ -15,31 +15,31 @@ public class SupplierController {
     @Autowired
     private ISupplierService supplierService;
 
-    @PostMapping("/create")
+    @PostMapping("/createSupplier")
     @ResponseStatus(HttpStatus.CREATED)
     public void saveSupplier(@RequestBody Supplier supplier) {
         supplierService.saveSupplier(supplier);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/allSupplier")
     public ResponseEntity<?> getAllSuppliers() {
         return ResponseEntity.ok(supplierService.getAllSuppliers());
     }
 
-    @GetMapping("/search/{id}")
+    @GetMapping("/searchSupplier/{id}")
     public ResponseEntity<?> findSupplierById(@PathVariable Long id) {
         return ResponseEntity.ok(supplierService.getSupplierById(id));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deleteSupplier/{id}")
     public ResponseEntity<?> deleteSupplier(@PathVariable Long id) {
         supplierService.deleteSupplier(id);
-        return ResponseEntity.ok("Supplier deleted");
+        return ResponseEntity.ok("Proveedor eliminado");
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/updateSupplier/{id}")
     public ResponseEntity<?> updateSupplier(@PathVariable Long id, @RequestBody Supplier supplier) {
         supplierService.updateSupplier(id, supplier);
-        return ResponseEntity.ok("Supplier updated");
+        return ResponseEntity.ok("Proveedor actualizado");
     }
 }

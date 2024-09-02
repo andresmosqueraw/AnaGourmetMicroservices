@@ -15,7 +15,7 @@ public class InventoryServiceImpl implements IInventoryService {
 
     @Override
     public List<Inventory> getAllInventories() {
-        return (List<Inventory>) inventoryRepository.findAll();
+        return inventoryRepository.findByStatusInventory(1);
     }
 
     @Override
@@ -25,24 +25,43 @@ public class InventoryServiceImpl implements IInventoryService {
 
     @Override
     public void saveInventory(Inventory inventory) {
+        if(inventory.getCreatedAt() == null){
+            inventory.setCreatedAt(java.time.Instant.now());
+        }
         inventoryRepository.save(inventory);
     }
 
     @Override
     public void deleteInventory(Long id) {
-        inventoryRepository.deleteById(id);
+        Inventory inventoryToUpdate = inventoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Inventario no encontrado por ID " + id));
+        inventoryToUpdate.setStatusInventory(0);
+        inventoryRepository.save(inventoryToUpdate);
     }
 
     @Override
     public void updateInventory(Long id, Inventory inventory) {
-        Inventory inventoryToUpdate = inventoryRepository.findById(id).orElseThrow();
-        inventoryToUpdate.setProductName(inventory.getProductName());
-        inventoryToUpdate.setQuantity(inventory.getQuantity());
-        inventoryToUpdate.setUnitPrice(inventory.getUnitPrice());
-        inventoryToUpdate.setSupplierId(inventory.getSupplierId());
-        inventoryToUpdate.setCreatedAt(inventory.getCreatedAt());
-        inventoryToUpdate.setUserId(inventory.getUserId());
-        inventoryToUpdate.setStatusInventory(inventory.getStatusInventory());
+        Inventory inventoryToUpdate = inventoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Inventario no encontrado"));
+        if (inventory.getProductName() != null) {
+            inventoryToUpdate.setProductName(inventory.getProductName());
+        }
+        if (inventory.getQuantity() != null) {
+            inventoryToUpdate.setQuantity(inventory.getQuantity());
+        }
+        if (inventory.getUnitPrice() != null) {
+            inventoryToUpdate.setUnitPrice(inventory.getUnitPrice());
+        }
+        if (inventory.getSupplierId() != null) {
+            inventoryToUpdate.setSupplierId(inventory.getSupplierId());
+        }
+        if (inventory.getCreatedAt() != null) {
+            inventoryToUpdate.setCreatedAt(inventory.getCreatedAt());
+        }
+        if (inventory.getUserId() != null) {
+            inventoryToUpdate.setUserId(inventory.getUserId());
+        }
+        if (inventory.getStatusInventory() != null) {
+            inventoryToUpdate.setStatusInventory(inventory.getStatusInventory());
+        }
         inventoryRepository.save(inventoryToUpdate);
     }
 }

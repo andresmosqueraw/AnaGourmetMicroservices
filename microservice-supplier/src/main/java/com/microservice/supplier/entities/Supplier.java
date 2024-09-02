@@ -33,7 +33,7 @@ public class Supplier {
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "created_at")
-    private Instant createdAt;
+    private Instant createdAt = Instant.now();
 
     @Column(name = "user_id")
     private Integer userId;
