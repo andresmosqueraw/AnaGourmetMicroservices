@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -16,7 +17,7 @@ public class SupplierServiceImpl implements ISupplierService {
 
     @Override
     public List<Supplier> getAllSuppliers() {
-        return (List<Supplier>) supplierRepository.findAll();
+        return supplierRepository.findByStatusSupplier(1);
     }
 
     @Override
@@ -27,20 +28,39 @@ public class SupplierServiceImpl implements ISupplierService {
     @Override
     @Transactional
     public void saveSupplier(Supplier supplier) {
+        if(supplier.getCreatedAt() == null) {
+            supplier.setCreatedAt(Instant.now());
+        }
         supplierRepository.save(supplier);
     }
 
     @Override
+    @Transactional
     public void deleteSupplier(Long id) {
-        supplierRepository.deleteById(id);
+        Supplier supplierToUpdate = supplierRepository.findById(id).orElseThrow(() -> new RuntimeException("Proveedor no encontrado por ID " + id));
+        supplierToUpdate.setStatusSupplier(0);
+        supplierRepository.save(supplierToUpdate);
     }
 
     @Override
     public void updateSupplier(Long id, Supplier supplier) {
-        Supplier supplierToUpdate = supplierRepository.findById(id).orElseThrow();
-        supplierToUpdate.setSupplierName(supplier.getSupplierName());
-        supplierToUpdate.setSuppliedProduct(supplier.getSuppliedProduct());
-        supplierToUpdate.setPhone(supplier.getPhone());
+        Supplier supplierToUpdate = supplierRepository.findById(id).orElseThrow(() -> new RuntimeException("Supplier not found"));
+
+        // Actualiza solo si el nuevo valor no es nulo
+        if (supplier.getSupplierName() != null) {
+            supplierToUpdate.setSupplierName(supplier.getSupplierName());
+        }
+        if (supplier.getSupplierProduct() != null) {
+            supplierToUpdate.setSupplierProduct(supplier.getSupplierProduct());
+        }
+        if (supplier.getPhone() != null) {
+            supplierToUpdate.setPhone(supplier.getPhone());
+        }
+        if (supplier.getStatusSupplier() != null) {
+            supplierToUpdate.setStatusSupplier(supplier.getStatusSupplier());
+        }
+
         supplierRepository.save(supplierToUpdate);
     }
+
 }
