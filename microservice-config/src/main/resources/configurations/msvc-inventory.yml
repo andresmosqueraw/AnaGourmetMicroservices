@@ -6,9 +6,9 @@ spring:
     name: msvc-inventory
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/inventory
+    url: jdbc:postgresql://25.1.49.168:5432/inventory
     username: postgres
-    password: postgres
+    password: 12345
   jpa:
     hibernate:
       ddl-auto: update
