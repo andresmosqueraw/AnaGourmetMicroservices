@@ -1,6 +1,7 @@
 package com.microservice.sale.service;
 
 import com.microservice.sale.entities.Sale;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 

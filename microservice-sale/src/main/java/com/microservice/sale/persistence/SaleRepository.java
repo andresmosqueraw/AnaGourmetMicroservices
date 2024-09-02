@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface SaleRepository extends CrudRepository<Sale, Integer> {
-    List<Sale> findByStatusSales(int statusSales);
+public interface SaleRepository extends CrudRepository<Sale, Long> {
+    List<Sale> findByStatusSales(Long statusSales);
 }

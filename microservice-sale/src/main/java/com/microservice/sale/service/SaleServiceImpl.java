@@ -17,11 +17,11 @@ public class SaleServiceImpl implements ISaleService{
 
     @Override
     public List<Sale> getAllSales() {
-        return saleRepository.findByStatusSales(1);
+        return saleRepository.findByStatusSales(1L);
     }
 
     @Override
-    public Sale getSaleById(Integer id) {
+    public Sale getSaleById(Long id) {
         return saleRepository.findById(id).orElseThrow();
     }
 
@@ -36,16 +36,16 @@ public class SaleServiceImpl implements ISaleService{
         saleRepository.save(sale);
     }
 
-    @Override
     @Transactional
-    public void deleteSale(Integer id) {
+    @Override
+    public void deleteSale(Long id) {
        Sale saleToUpdate = saleRepository.findById(id).orElseThrow(() -> new RuntimeException("Venta no encontrada por ID " + id));
        saleToUpdate.setStatusSales(0);
        saleRepository.save(saleToUpdate);
     }
 
     @Override
-    public void updateSale(Integer id, Sale sale) {
+    public void updateSale(Long id, Sale sale) {
         Sale saleToUpdate = saleRepository.findById(id).orElseThrow(() -> new RuntimeException("Venta no encontrada"));
         // Actualiza solo si el nuevo valor no es nulo
         if (sale.getCustomerId() != null) {

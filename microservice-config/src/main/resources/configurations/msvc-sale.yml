@@ -6,7 +6,7 @@ spring:
     name: msvc-sale
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/sales
+    url: jdbc:postgresql://localhost:5433/sale
     username: postgres
     password: postgres
   jpa:
