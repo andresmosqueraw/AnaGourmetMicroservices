@@ -8,7 +8,7 @@ public interface ISupplierService {
 
     List<Supplier> getAllSuppliers();
     Supplier getSupplierById(Long id);
-    void saveSupplier(Supplier supplier);
+    Supplier saveSupplier(Supplier supplier);
     void deleteSupplier(Long id);
     void updateSupplier(Long id, Supplier supplier);
 

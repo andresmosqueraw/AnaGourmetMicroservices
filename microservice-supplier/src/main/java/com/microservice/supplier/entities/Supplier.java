@@ -41,4 +41,7 @@ public class Supplier {
     @Column(name = "status_supplier")
     private Integer statusSupplier;
 
+    @Column(name = "ip_address")
+    private String ipAddress;
+
 }

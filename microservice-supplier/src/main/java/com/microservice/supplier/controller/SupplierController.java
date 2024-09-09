@@ -18,8 +18,9 @@ public class SupplierController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveSupplier(@RequestBody Supplier supplier) {
-        supplierService.saveSupplier(supplier);
+    public ResponseEntity<Supplier> saveSupplier(@RequestBody Supplier supplier) {
+        Supplier savedSupplier = supplierService.saveSupplier(supplier);
+        return new ResponseEntity<>(savedSupplier, HttpStatus.CREATED);
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -38,7 +39,7 @@ public class SupplierController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteSupplier(@PathVariable Long id) {
         supplierService.deleteSupplier(id);
-        return ResponseEntity.ok("Supplier deleted");
+        return ResponseEntity.ok("Proveedor Eliminado");
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

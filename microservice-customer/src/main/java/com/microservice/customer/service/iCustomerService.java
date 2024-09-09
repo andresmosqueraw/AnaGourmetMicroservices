@@ -8,6 +8,7 @@ public interface iCustomerService {
 
     List<Customer> getAllCustomers();
     Customer getCustomerById(Long id);
-    void saveCustomer(Customer customer);
+    Customer saveCustomer(Customer customer);
     void deleteCustomer(Long id);
+    void updateCustomer(Long id, Customer customer);
 }

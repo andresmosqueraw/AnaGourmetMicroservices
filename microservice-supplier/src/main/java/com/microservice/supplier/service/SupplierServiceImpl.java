@@ -2,8 +2,11 @@ package com.microservice.supplier.service;
 
 import com.microservice.supplier.entities.Supplier;
 import com.microservice.supplier.persistence.SupplierRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.time.Instant;
 import java.util.List;
@@ -25,14 +28,15 @@ public class SupplierServiceImpl implements ISupplierService {
     }
 
     @Override
-    public void saveSupplier(Supplier supplier) {
+    public Supplier saveSupplier(Supplier supplier) {
         if (supplier.getSupplierProduct() == null || supplier.getSupplierProduct().isEmpty()) {
             throw new IllegalArgumentException("Supplier must have at least one product.");
         }
         if(supplier.getCreatedAt() == null) {
             supplier.setCreatedAt(Instant.now());
         }
-        supplierRepository.save(supplier);
+        supplier.setIpAddress(getClientIpAddress());
+        return supplierRepository.save(supplier);
     }
 
     @Override
@@ -61,6 +65,17 @@ public class SupplierServiceImpl implements ISupplierService {
         }
 
         supplierRepository.save(supplierToUpdate);
+    }
+
+    private String getClientIpAddress() {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+        System.out.println("Client IP Address: " + ipAddress);
+        if (ipAddress == null || ipAddress.isEmpty()) {
+            ipAddress = request.getRemoteAddr();
+        }
+        System.out.println("Client IP Address: " + ipAddress);
+        return ipAddress;
     }
 
 }
