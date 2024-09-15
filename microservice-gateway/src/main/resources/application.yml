@@ -2,4 +2,19 @@ spring:
   application:
     name: msvc-gateway
   config:
-    import: optional:configserver:http://localhost:8888
+    import: "optional:configserver:http://localhost:8888"
+  cloud:
+    gateway:
+      routes:
+        - id: cliente-service
+          uri: lb://msvc-cliente
+          predicates:
+            - Path=/cliente/**
+      discovery:
+        locator:
+          enabled: true # Habilitar el uso de Eureka para encontrar microservicios
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka # Dirección del servidor de Eureka

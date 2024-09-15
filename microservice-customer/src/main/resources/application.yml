@@ -1,25 +1,5 @@
-server:
-  port: 8100
-
 spring:
   application:
-    name: msvc-customer
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://25.1.49.168:5432/customer
-    username: postgres
-    password: 12345
-  jpa:
-    hibernate:
-      ddl-auto: update
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    name: msvc-inventory
   config:
     import: optional:configserver:http://localhost:8888
-
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    service-url:
-      defautlZone: http://localhost:8761/eureka

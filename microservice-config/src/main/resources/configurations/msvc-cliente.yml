@@ -1,14 +1,14 @@
 server:
-  port: 8090
+  port: 8200
 
 spring:
   application:
-    name: msvc-supplier
+    name: msvc-cliente
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://34.123.35.169:5432/supplier
+    url: jdbc:postgresql://localhost:5432/customer
     username: postgres
-    password: AnaGourmet.$!
+    password: postgres # Ajusta la contraseña según corresponda
   jpa:
     hibernate:
       ddl-auto: update
