@@ -12,9 +12,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-      show-sql: true
-    database: POSTGRESQL
-    database-platform: org.hibernate.dialect.PostgresSQLDialect
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 eureka:
   instance:
