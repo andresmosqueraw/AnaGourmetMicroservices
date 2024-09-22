@@ -1,12 +1,12 @@
 server:
-  port: 8100
+  port: 8101
 
 spring:
   application:
     name: msvc-sale
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/sale
+    url: jdbc:postgresql://25.1.49.168:5432/sale
     username: postgres
     password: 12345
   jpa:

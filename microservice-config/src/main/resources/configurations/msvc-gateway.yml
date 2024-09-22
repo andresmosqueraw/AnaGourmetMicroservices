@@ -22,12 +22,12 @@ spring:
           - id: customers
             uri: http://localhost:8100
             predicates:
-              - Path=/api/sale/**
+              - Path=/api/customer/**
           - id: inventories
-            uri: http://localhost:8110
+            uri: http://localhost:8201
             predicates:
               - Path=/api/inventory/**
           - id: sales
-            uri: http://localhost:8120
+            uri: http://localhost:8101
             predicates:
               - Path=/api/sale/**

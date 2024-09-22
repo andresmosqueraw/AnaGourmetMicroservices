@@ -6,15 +6,15 @@ spring:
     name: msvc-customer
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/customer
+    url: jdbc:postgresql://34.123.35.169:5432/customer
     username: postgres
-    password: postgres #AnaGourmet.$!
+    password: AnaGourmet.$!
   jpa:
     hibernate:
       ddl-auto: update
       show-sql: true
     database: POSTGRESQL
-    database-platform: org.hibernate.dialect.PostgresSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 eureka:
   instance:

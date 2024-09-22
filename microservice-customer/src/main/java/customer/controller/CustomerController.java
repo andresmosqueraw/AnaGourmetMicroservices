@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/api/customer")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CustomerController {
 
@@ -29,6 +29,11 @@ public class CustomerController {
     @GetMapping("/search/{id}")
     public ResponseEntity<?> findCustomerById(@PathVariable Long id) {
         return ResponseEntity.ok(customerService.getCustomerById(id));
+    }
+
+    @GetMapping("/search/email/{email}")
+    public ResponseEntity<?> findCustomerByEmail(@PathVariable String email) {
+        return ResponseEntity.ok(customerService.getCustomerByEmail(email));
     }
 
     @DeleteMapping("/delete/{id}")
