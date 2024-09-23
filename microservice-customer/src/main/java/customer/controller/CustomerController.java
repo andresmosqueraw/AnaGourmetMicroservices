@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/customer")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -45,7 +48,13 @@ public class CustomerController {
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
         customerService.updateCustomer(id, customer);
-        return ResponseEntity.ok("Cliente Actualizado");
+
+        // Crear un objeto que contiene el mensaje
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Cliente Actualizado");
+
+        // Devolver el objeto JSON en lugar de una cadena
+        return ResponseEntity.ok(response);
     }
 
 
