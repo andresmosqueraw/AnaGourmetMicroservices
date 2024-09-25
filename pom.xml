@@ -25,7 +25,6 @@
     <module>microservice-customer</module>
     <module>microservice-inventory</module>
     <module>microservice-sale</module>
-    <module>microservice-cliente</module>
   </modules>
 
   <properties>
