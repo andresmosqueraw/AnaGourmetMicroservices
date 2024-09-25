@@ -6,12 +6,12 @@ spring:
     name: msvc-supplier
   datasource:
     driver-class-name: org.postgresql.Driver
-    #url: jdbc:postgresql://34.123.35.169:5432/supplier
-    #username: postgres
-    #password: AnaGourmet.$!
-    url: jdbc:postgresql://localhost:5432/supplier
+    url: jdbc:postgresql://34.123.35.169:5432/supplier
     username: postgres
-    password: "#Mahecha3." # Ajusta la contraseña según corresponda
+    password: AnaGourmet.$!
+    #url: jdbc:postgresql://localhost:5432/supplier
+    #username: postgres
+    #password: "#Mahecha3." # Ajusta la contraseña según corresponda
   jpa:
     hibernate:
       ddl-auto: update

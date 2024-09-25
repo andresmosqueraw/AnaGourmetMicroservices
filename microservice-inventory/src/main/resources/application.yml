@@ -2,7 +2,7 @@ spring:
   application:
     name: msvc-inventory
   config:
-    import: optional:configserver:http://localhost:8888
+    import: optional:configserver:http://localhost:8889
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
