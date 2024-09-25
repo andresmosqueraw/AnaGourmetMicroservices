@@ -9,9 +9,6 @@ spring:
     url: jdbc:postgresql://34.123.35.169:5432/supplier
     username: postgres
     password: AnaGourmet.$!
-    #url: jdbc:postgresql://localhost:5432/supplier
-    #username: postgres
-    #password: "#Mahecha3." # Ajusta la contraseña según corresponda
   jpa:
     hibernate:
       ddl-auto: update

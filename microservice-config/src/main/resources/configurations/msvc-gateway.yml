@@ -16,18 +16,18 @@ spring:
       mvc:
         routes:
           - id: suppliers
-            uri: http://localhost:8090
+            uri: http://35.188.66.64:8090
             predicates:
               - Path=/api/supplier/**
           - id: customers
-            uri: http://localhost:8100
+            uri: http://35.188.66.64:8100
             predicates:
               - Path=/api/customer/**
           - id: inventories
-            uri: http://localhost:8201
+            uri: http://35.188.66.64:8201
             predicates:
               - Path=/api/inventory/**
           - id: sales
-            uri: http://localhost:8101
+            uri: http://35.188.66.64:8101
             predicates:
               - Path=/api/sale/**
